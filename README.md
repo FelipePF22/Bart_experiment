@@ -10,7 +10,7 @@ O intuito do projeto surgiu a partir da observação do rover Bart, que executa 
 
 O coração deste projeto é o microcontrolador **ESP32 Wemos D1 R32**. Ele foi escolhido por sua capacidade de processamento, conectividade Wi-Fi integrada e baixo consumo de energia, características ideais para um projeto de monitoramento remoto. O firmware desenvolvido utiliza a biblioteca Arduino para gerenciar os sensores, o servidor web e o sistema de arquivos SPIFFS para armazenar os dados coletados.
 
-![ESP32 Wemos D1 R32](caminho/para/sua/imagem_esp32.jpg)
+![ESP32 Wemos D1 R32](imagens/esp.png)
 
 ---
 
@@ -18,7 +18,7 @@ O coração deste projeto é o microcontrolador **ESP32 Wemos D1 R32**. Ele foi 
 
 Para medir a rotação do motor, utilizamos quatro **sensores Hall**. Esses sensores detectam a presença de campos magnéticos. Ao acoplá-los a um disco com ímãs no eixo do motor, cada passagem de um ímã gera um pulso. O firmware do ESP32 utiliza interrupções para contar esses pulsos e calcular o período de rotação, que pode ser usado para inferir a velocidade do motor.
 
-![Sensores Hall](caminho/para/sua/imagem_sensor_hall.jpg)
+![Sensores Hall](imagens/sensor.png)
 
 ---
 
@@ -26,7 +26,7 @@ Para medir a rotação do motor, utilizamos quatro **sensores Hall**. Esses sens
 
 Um servidor web é executado no próprio ESP32, permitindo o monitoramento em tempo real e a coleta dos dados. Ao acessar o IP do dispositivo na rede, o usuário pode visualizar uma **interface simples** que exibe o período de rotação de cada sensor em milissegundos.
 
-![Interface do Web Server](caminho/para/sua/imagem_web_server.png)
+![Interface do Web Server](imagens/webserver.png)
 
 Além disso, o servidor web oferece duas funcionalidades chave:
 
