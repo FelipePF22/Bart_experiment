@@ -42,5 +42,6 @@ Além disso, o servidor web oferece duas funcionalidades chave:
 * **Reset de Log**: O código foi configurado para **remover o arquivo de log anterior** (`sensores.txt`) sempre que o ESP32 é reiniciado. Isso garante que cada experimento comece com um arquivo de log limpo.
 * **IP do Servidor**: O IP do ESP32 será exibido no monitor serial após a conexão Wi-Fi. Use este endereço para acessar o servidor web e visualizar os dados.
 * **Conectando no wifi**: Além do aviso de conectado no monitor serial, um segundo led será aceso ao ser conectado na rede.
+* **Bibiloteca Arduino**: Dentro da pasta `motor_code`, contem o codigo ino e zip das bibliotecas necessárias para o funcionamento do código.
 
 ---
