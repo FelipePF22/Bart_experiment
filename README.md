@@ -38,7 +38,7 @@ Além disso, o servidor web oferece duas funcionalidades chave:
 ## ⚠️ Avisos e Configurações
 
 * **Credenciais Wi-Fi**: Antes de compilar e enviar o código para o ESP32, é necessário modificar as credenciais de Wi-Fi nas linhas `const char* ssid` e `const char* password` para as da sua rede local, alem disso a máquina em que será utilizado para o acesso ao web server deve estar na mesma rede em que o esp esta conectado 
-* **Pinos dos Sensores**: Os pinos dos sensores Hall estão definidos no código. Certifique-se de conectar os sensores corretamente aos pinos `26`, `25`, `33` e `32` do ESP32, conforme configurado no `#define`.
+* **Pinos dos Sensores**: Os pinos dos sensores Hall estão definidos no código. Certifique-se de conectar os sensores corretamente aos pinos `26`, `25`, `16` e `17` do ESP32, conforme configurado no `#define`.
 * **Reset de Log**: O código foi configurado para **remover o arquivo de log anterior** (`sensores.txt`) sempre que o ESP32 é reiniciado. Isso garante que cada experimento comece com um arquivo de log limpo.
 * **IP do Servidor**: O IP do ESP32 será exibido no monitor serial após a conexão Wi-Fi. Use este endereço para acessar o servidor web e visualizar os dados.
 * **Conectando no wifi**: Além do aviso de conectado no monitor serial, um segundo led será aceso ao ser conectado na rede.
