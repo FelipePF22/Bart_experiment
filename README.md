@@ -10,7 +10,7 @@ O intuito do projeto surgiu a partir da observação do rover Bart, que executa 
 
 O coração deste projeto é o microcontrolador **ESP32 Wemos D1 R32**. Ele foi escolhido por sua capacidade de processamento, conectividade Wi-Fi integrada e baixo consumo de energia, características ideais para um projeto de monitoramento remoto. O firmware desenvolvido utiliza a biblioteca Arduino para gerenciar os sensores, o servidor web e o sistema de arquivos SPIFFS para armazenar os dados coletados.
 
-![ESP32 Wemos D1 R32](imagens/esp.png)
+![ESP32 Wemos D1 R32](imagens/esp32.png)
 
 ---
 
