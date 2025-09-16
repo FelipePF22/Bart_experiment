@@ -5,8 +5,8 @@
 #include "time.h"
 
 // ---- Config WiFi ----
-const char* ssid = "A54 de Felipe";
-const char* password = "12345678";
+const char* ssid = "user";
+const char* password = "password";
 
 // ---- Status WiFi ----
 const int ledPin = 2;
@@ -14,8 +14,8 @@ const int ledPin = 2;
 // ---- Pinos dos sensores ----
 #define Sensor1 26
 #define Sensor2 25
-#define Sensor3 33
-#define Sensor4 32
+#define Sensor3 17
+#define Sensor4 16
 
 // ---- Variáveis globais ----
 volatile unsigned long periodo1 = 0;
@@ -272,3 +272,4 @@ void loop() {
     }
   }
 }
+
