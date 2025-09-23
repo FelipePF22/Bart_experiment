@@ -5,8 +5,8 @@
 #include "time.h"
 
 // ---- Config WiFi ----
-const char* ssid = "user";
-const char* password = "password";
+const char* ssid = "user"; // coloque o nome da rede 
+const char* password = "password"; // coloque a senha dessa rede
 
 // ---- Status WiFi ----
 const int ledPin = 2;
@@ -14,8 +14,8 @@ const int ledPin = 2;
 // ---- Pinos dos sensores ----
 #define Sensor1 26
 #define Sensor2 25
-#define Sensor3 17
-#define Sensor4 16
+#define Sensor3 16
+#define Sensor4 17
 
 // ---- Variáveis globais ----
 volatile unsigned long periodo1 = 0;
@@ -185,10 +185,10 @@ void setup() {
   
 
   // Interrupções
-  attachInterrupt(digitalPinToInterrupt(Sensor1), aciona_Interrupcao1, FALLING);
-  attachInterrupt(digitalPinToInterrupt(Sensor2), aciona_Interrupcao2, FALLING);
-  attachInterrupt(digitalPinToInterrupt(Sensor3), aciona_Interrupcao3, FALLING);
-  attachInterrupt(digitalPinToInterrupt(Sensor4), aciona_Interrupcao4, FALLING);
+  attachInterrupt(digitalPinToInterrupt(Sensor1), aciona_Interrupcao1, RISING);
+  attachInterrupt(digitalPinToInterrupt(Sensor2), aciona_Interrupcao2, RISING);
+  attachInterrupt(digitalPinToInterrupt(Sensor3), aciona_Interrupcao3, RISING);
+  attachInterrupt(digitalPinToInterrupt(Sensor4), aciona_Interrupcao4, RISING);
 
   // Monta SPIFFS
   if (!SPIFFS.begin(true)) {
@@ -223,7 +223,7 @@ void setup() {
   if (!SPIFFS.exists("/sensores.txt")) {
     File file = SPIFFS.open("/sensores.txt", FILE_WRITE);
     if (file) {
-      file.println("Hora;Sensor1(ms);Sensor2(ms);Sensor3(ms);Sensor4(ms)");
+      file.println("Hora;Sensor1(ms);RPM1;Sensor2(ms);RPM2;Sensor3(ms);RPM3;Sensor4(ms);RPM4");
       file.close();
     }
   }
@@ -259,17 +259,21 @@ void loop() {
 
     // ---- Grava log a cada 1s ----
     static unsigned long ultimoLog = 0;
-    if (agora - ultimoLog > 1000) {
+    if (agora - ultimoLog > 125) {
       ultimoLog = agora;
+
+        float rpm1 = (periodo1 > 0) ? (60.0 * 1000.0) / (periodo1 * 3.0) : 0.0;
+        float rpm2 = (periodo2 > 0) ? (60.0 * 1000.0) / (periodo2 * 3.0) : 0.0;
+        float rpm3 = (periodo3 > 0) ? (60.0 * 1000.0) / (periodo3 * 3.0) : 0.0;
+        float rpm4 = (periodo4 > 0) ? (60.0 * 1000.0) / (periodo4 * 3.0) : 0.0;
       
       File file = SPIFFS.open("/sensores.txt", FILE_APPEND);
       if (file) {
-        file.printf("%s;%lu;%lu;%lu;%lu\n",
+        file.printf("%s;  %lu;  %.2f;  %lu;  %.2f;  %lu;  %.2f;  %lu;  %.2f\n",
                     getHora().c_str(),
-                    periodo1, periodo2, periodo3, periodo4);
+                    periodo1, rpm1, periodo2, rpm2, periodo3, rpm3, periodo4, rpm4);
         file.close();
       }
     }
   }
 }
-
